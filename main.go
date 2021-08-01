@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/web-tuto-with-gin/dataservice/memory"
+	"github.com/web-tuto-with-gin/dataservice/mysql"
 	"github.com/web-tuto-with-gin/rest/handler"
 	"github.com/web-tuto-with-gin/rest/middleware"
 	"github.com/web-tuto-with-gin/usecase/manageArticle"
@@ -12,18 +12,18 @@ import (
 )
 
 func main() {
-	//mysql.Setup()
-	memory.Setup()
+	mysql.Setup()
+	// memory.Setup()
 
-	ar := memory.NewArticleRepo()
-	ur := memory.NewUserRepo()
-	// ar := mysql.NewArticleRepo()
-	// ur := mysql.NewUserRepo()
+	// ar := memory.NewArticleRepo()
+	// ur := memory.NewUserRepo()
+	ar := mysql.NewArticleRepo()
+	ur := mysql.NewUserRepo()
 	mauc := manageArticle.NewManageArticleUsecase(ar, ur)
 	ruc := registration.NewRegistrationUsecase(ur)
 	h := handler.NewGinHandler(mauc, ruc)
 
-	//gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.LoadHTMLGlob("view/*")
 
