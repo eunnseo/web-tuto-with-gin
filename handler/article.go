@@ -24,6 +24,7 @@ func ShowArticleCreationPage(c *gin.Context) {
 		"title": "Create New Article"}, "create-article.html")
 }
 
+// 글 조회 요청을 처리하는 핸들러 함수
 func GetArticle(c *gin.Context) {
 	// Check if the article ID is valid
 	if articleID, err := strconv.Atoi(c.Param("article_id")); err == nil {
@@ -44,6 +45,7 @@ func GetArticle(c *gin.Context) {
 	}
 }
 
+// 글 생성 요청을 처리하는 핸들러 함수
 func CreateArticle(c *gin.Context) {
 	// Obtain the POSTed title and content values
 	title := c.PostForm("title")
@@ -58,6 +60,7 @@ func CreateArticle(c *gin.Context) {
 	}
 }
 
+// 글 삭제 요청을 처리하는 핸들러 함수
 func DeleteArticle(c *gin.Context) {
 	// Check if the article ID is valid
 	if articleID, err := strconv.Atoi(c.Param("article_id")); err == nil {
