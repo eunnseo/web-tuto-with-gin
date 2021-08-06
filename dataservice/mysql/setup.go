@@ -9,9 +9,9 @@ import (
 
 const (
 	dbms = "mysql"
-	user = "root"
-	pass = "password"
-	db   = "webtuto"
+	user = "nclab"
+	pass = ""
+	db   = "webtutov2"
 )
 
 var dbConn *gorm.DB
