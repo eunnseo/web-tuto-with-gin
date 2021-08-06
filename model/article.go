@@ -36,10 +36,12 @@ func init() {
 	id = len(articleList)
 }
 
+// 메모리에 저장된 모든 Article들을 리턴
 func GetAllArticles() []Article {
 	return articleList
 }
 
+// 메모리에 저장된 Article 리스트에서 Id에 해당하는 Article을 검색한 뒤에 해당 값을 리턴
 func GetArticleByID(id int) (*Article, error) {
 	for _, a := range articleList {
 		if a.ID == id {
@@ -49,6 +51,7 @@ func GetArticleByID(id int) (*Article, error) {
 	return nil, errors.New("Article not found")
 }
 
+// 새로운 Article 인스턴스를 생성한 후에 articleList에 추가
 func CreateNewArticle(title, content string) (*Article, error) {
 	a := Article{
 		ID:    id,
@@ -62,6 +65,7 @@ func CreateNewArticle(title, content string) (*Article, error) {
 	return &a, nil
 }
 
+// articleList에서 id에 해당하는 Article을 검색한 뒤에 해당 글을 리스트에서 삭제
 func DeleteArticleByID(id int) error {
 	for i, a := range articleList {
 		if a.ID == id {

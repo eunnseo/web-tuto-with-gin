@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// 홈 페이지 요청을 담당할 핸들러 함수
 func ShowIndexPage(c *gin.Context) {
 	articles := model.GetAllArticles()
 
